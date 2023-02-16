@@ -1,4 +1,6 @@
-const test = 'The Tao gave birth to machine language.  Machine language gave birth to the assembler. The assembler gave birth to the compiler.  Now there are ten thousand languages. Each language has its purpose, however humble.  Each language expresses the Yin and Yang of software.  Each language has its place within the Tao. But do not program in COBOL if you can avoid it.  -- Geoffrey James, "The Tao of Programming"'
+let input = document.querySelector('#input');
+let resultSpan = document.querySelector('#result');
+let button = document.querySelector('#button');
 
 function uniqChartInWord(w) {
     let res = {}
@@ -15,10 +17,15 @@ function uniqChartInWord(w) {
 }
 
 function uniqChartInStr(str) {
+    console.log(str)
     let testArr = str.split(' ');
     let resArr = testArr.map(word => uniqChartInWord(word)).join('')
     let result = uniqChartInWord(resArr)
+
+    console.log(result)
     return result;
 }
 
-console.log(uniqChartInStr(test))
+button.addEventListener('click', function() {
+    resultSpan.innerHTML = uniqChartInStr(input.value)
+})
